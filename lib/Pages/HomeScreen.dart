@@ -10,8 +10,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-    // final TextEditingController _userNameTextController = TextEditingController();
-    // final TextEditingController _userNameTextController = TextEditingController();
 
     String username= 'kush';
   @override
