@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-    // final TextEditingController _userNameTextController = TextEditingController();
+    final TextEditingController _userNameTextController = TextEditingController();
     String username= 'kush';
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(backgroundColor: Colors.deepPurple,
       appBar: AppBar(
-        foregroundColor: Colors.black,
+        foregroundColor: Colors.black, 
         title: Text(username)),
       body: Center(
         child: firebaseUIButton(context, 'Logout', (){
