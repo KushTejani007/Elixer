@@ -18,16 +18,61 @@ class _HomeScreenState extends State<HomeScreen> {
     
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(backgroundColor: Colors.deepPurple,
-      appBar: AppBar(
-        foregroundColor: Colors.black, 
-        title: Text(username)),
-      body: Center(
-        child: firebaseUIButton(context, 'Logout', (){
+      home: Scaffold(backgroundColor: const Color.fromARGB(255, 20, 20, 20),
+      
         
-        Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const SignInScreen()));
-      }))),
+      body: Column(
+
+        children: [
+          //Toggle
+          Center(
+            
+            child: Container(
+              width: 300,
+              height: 70,
+              margin: const EdgeInsets.only(top:35),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.teal,                      
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(onPressed: () {},style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all<Size>(const Size(130, 60)), 
+                    backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 20, 20, 20)), 
+                    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder( borderRadius: BorderRadius.circular(20))
+                    )
+                  ), child:const Text('Maps'),),
+
+                  ElevatedButton(onPressed: () {},style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all<Size>(const Size(130, 60)),
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.teal), // Set the background color
+                    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder( borderRadius: BorderRadius.circular(20))
+                    )
+                  ), child:const Text('List'),),
+
+                ],
+              ),
+              // child: firebaseUIButton(context, 'Map', () {}),
+            ),
+          ),
+        
+          Center(
+            
+            child: firebaseUIButton(context, 'Logout', (){
+              Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const SignInScreen()));
+            }),
+          )
+        ],
+      )
+      
+      ),
     );
   }
 }
