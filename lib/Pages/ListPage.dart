@@ -1,16 +1,24 @@
 // ignore_for_file: prefer_const_constructors
 
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:flutter_application_1/Pages/HomeScreen.dart";
 import "package:flutter_application_1/Pages/Login.dart";
 import "package:flutter_application_1/Pages/Reuseable.dart";
+import 'package:http/http.dart' as http;
 
-class ListPage extends StatelessWidget {
+class ListPage extends StatefulWidget {
   const ListPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<ListPage> createState() => _ListPageState();
+}
 
+class _ListPageState extends State<ListPage> {
+  List<dynamic> users = [];
+  @override
+  Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(backgroundColor: const Color.fromARGB(255, 20, 20, 20),
@@ -47,7 +55,7 @@ class ListPage extends StatelessWidget {
                     )
                   ), child:const Text('Maps'),),
 
-                  ElevatedButton(onPressed: () {},style: ButtonStyle(
+                  ElevatedButton(onPressed: () { fetchuser();},style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all<Size>(const Size(130, 60)),
                     backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 20, 20, 20)), // Set the background color
                     foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -68,11 +76,58 @@ class ListPage extends StatelessWidget {
               Navigator.push(context,
               MaterialPageRoute(builder: (context) => const SignInScreen()));
             }),
-          )
+          ),
+
+          Center(
+            child: Column(
+              
+              children: [
+                Container(
+                  height: 150,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                Container(
+                  height: 150,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                Container(
+                  height: 150,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(20),
+                    
+                  ),
+                ),
+              ],
+            ),            
+          ),
         ],
       )
       
       ),
     );
+  }
+
+  void fetchuser() async{
+  print('Fetchuser called');
+  const url= 'https://randomuser.me/api/?results=5';
+  final uri=Uri.parse(url);
+  final response = await http.get(uri);
+  final body= response.body;
+  final json = jsonDecode(body);
+  setState(() {
+  users = json['results']; 
+    
+  });
+  print("fetching compl");
   }
 }
