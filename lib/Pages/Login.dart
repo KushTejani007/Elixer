@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import "dart:js_interop_unsafe";
+// import "dart:js_interop_unsafe";
 
 import "package:firebase_auth/firebase_auth.dart";
 // import "package:firebase_core/firebase_core.dart";

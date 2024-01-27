@@ -22,23 +22,27 @@ class _ListPageState extends State<ListPage> {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(backgroundColor: const Color.fromARGB(255, 20, 20, 20),
-      
-        
-      body: Column(
-
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(115), // Set the height here
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0, // Remove shadow
+    // title: Text('Your Title'),
+          centerTitle: true,
+          bottom: PreferredSize(
+      preferredSize: Size.fromHeight(0), // Hide the existing bottom
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          //Toggle
-          Center(
-            
-            child: Container(
-              width: 300,
+          Container(
+             width: 300,
               height: 70,
-              margin: const EdgeInsets.only(top:35),
+              margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.teal,                      
               ),
-              child: Row(
+                            child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(onPressed: () {
@@ -66,10 +70,19 @@ class _ListPageState extends State<ListPage> {
 
                 ],
               ),
-              // child: firebaseUIButton(context, 'Map', () {}),
-            ),
+// Example color, replace with your desired color
           ),
+        ],
+      ),
+    ),
+  ),
+),
+
         
+      body: ListView(
+        
+        children: [
+                  
           Center(
             
             child: firebaseUIButton(context, 'Logout', (){
@@ -79,36 +92,47 @@ class _ListPageState extends State<ListPage> {
           ),
 
           Center(
-            child: Column(
-              children: [
-                Container(
-                  height: 170,
-                  margin: EdgeInsets.all(10),
-
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(20),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    height: 170,
+                    margin: EdgeInsets.all(10),
+              
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                ),
-                Container(
-                  height: 170,
-                  margin: EdgeInsets.all(10),
-
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(20),
+                  Container(
+                    height: 170,
+                    margin: EdgeInsets.all(10),
+              
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                ),
-                Container(
-                  height: 170,
-                  margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(20),
-                    
+                  Container(
+                    height: 170,
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(20),
+                      
+                    ),
                   ),
-                ),
-              ],
+                  Container(
+                    height: 170,
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(20),
+                      
+                    ),
+                  ),
+                ],
+              ),
             ),            
           ),
         ],
