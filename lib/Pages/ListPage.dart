@@ -116,6 +116,24 @@ class _ListPageState extends State<ListPage> {
                   Container(
                     height: 170,
                     margin: EdgeInsets.all(10),
+              
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  Container(
+                    height: 170,
+                    margin: EdgeInsets.all(10),
+              
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  Container(
+                    height: 170,
+                    margin: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.amber,
                       borderRadius: BorderRadius.circular(20),
