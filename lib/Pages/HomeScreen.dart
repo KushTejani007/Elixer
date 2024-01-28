@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/ListPage.dart';
+import 'package:flutter_application_1/Pages/Wallet.dart';
 // import 'package:flutter_application_1/Pages/Login.dart';
 // import 'package:flutter_application_1/Pages/Reuseable.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -77,9 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ),
 ),
-
+      
       bottomNavigationBar:const GNav(
-          tabBackgroundColor: Color.fromARGB(255, 20, 20, 20),
+          tabBackgroundColor: Color.fromARGB(250, 20, 20, 20),
           tabBorderRadius: 20,
           tabMargin: EdgeInsets.all(10),
           backgroundColor: Colors.teal,
@@ -88,6 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
           gap: 5,
         tabs:[
           GButton(
+          
           icon: Icons.home,
           // iconColor: Colors.white,
           iconSize: 25,
@@ -96,15 +98,23 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: Icons.wallet,
           // iconColor: Colors.white,
           iconSize: 25,
-          text: 'Wallet',),
+          text: 'Wallet',
+        ),
           GButton(
           icon: Icons.menu,
           // iconColor: Colors.white,
           iconSize: 25,
-          text: 'Others',)]) ,
-          
+          text: 'Menu',)]) ,
+        
       
       ),
     );
   }
+  void _navigateToWalletPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => WalletPage()),
+    );
+  }
+
 }
