@@ -32,10 +32,9 @@ class _SignInScreenState extends State<SignInScreen> {
       child: Column(
         children: <Widget>[
           logowidget("assets/images/Logo1.png"),
-          const SizedBox(
-                  
-                  height: 15,
-                ),
+          // const SizedBox(
+          //         height: 5,
+          //       ),
                 reusableTextField("Enter UserName", Icons.person_outline, false,
                     _emailTextController),
                 const SizedBox(
