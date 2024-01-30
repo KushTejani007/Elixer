@@ -4,6 +4,7 @@
 
 import "package:firebase_auth/firebase_auth.dart";
 // import "package:firebase_core/firebase_core.dart";
+// import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:flutter_application_1/Pages/HomeScreen.dart";
 import "package:flutter_application_1/Pages/Reuseable.dart";
@@ -17,6 +18,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
   @override
@@ -51,8 +53,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen()), (route) => false);
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });
