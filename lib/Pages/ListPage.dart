@@ -7,6 +7,7 @@ import "package:flutter_application_1/Pages/HomeScreen.dart";
 import "package:flutter_application_1/Pages/Login.dart";
 import "package:flutter_application_1/Pages/Reuseable.dart";
 import 'package:http/http.dart' as http;
+import "package:page_transition/page_transition.dart";
 
 class ListPage extends StatefulWidget {
   const ListPage({super.key});
@@ -48,7 +49,9 @@ class _ListPageState extends State<ListPage> {
                   ElevatedButton(onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()), );
+                      PageTransition(child: const HomeScreen(), type: PageTransitionType.fade)
+                      // MaterialPageRoute(builder: (context) => const HomeScreen()), 
+                      );
 
                   },style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all<Size>(const Size(130, 60)), 

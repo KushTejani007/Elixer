@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/HomeScreen.dart';
 import 'package:flutter_application_1/Pages/Wallet.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:page_transition/page_transition.dart';
 
 
 class MenuPage extends StatefulWidget {
@@ -79,14 +80,17 @@ class _MenuPageState extends State<MenuPage> {
         // If Home page is another widget, replace MaterialPageRoute with your desired route.
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          PageTransition(child: const HomeScreen(), type: PageTransitionType.fade)
+          // MaterialPageRoute(builder: (context) => const HomeScreen()),
         );
         break;
       case 1:
         // Navigate to WalletPage
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const WalletPage()),
+            PageTransition(child: const WalletPage(), type: PageTransitionType.fade)
+
+          // MaterialPageRoute(builder: (context) => const WalletPage()),
         );
         break;
       case 2:

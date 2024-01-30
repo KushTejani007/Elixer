@@ -3,6 +3,7 @@ import 'package:flutter_application_1/Pages/ListPage.dart';
 import 'package:flutter_application_1/Pages/Wallet.dart';
 import 'package:flutter_application_1/Pages/menu.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,10 +14,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  late final Duration themeAnimationDuration;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // themeAnimationDuration: const Duration(milliseconds: 5),      
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 20, 20, 20),
@@ -65,9 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => const ListPage(),
-                              ),
+                              PageTransition(child: const ListPage(), type: PageTransitionType.fade)
+                              // MaterialPageRoute(builder: (context) => const ListPage(),),
                             );
                           },
                           style: ButtonStyle(
@@ -130,6 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+  
 
   void _navigateToPage(int index) {
     switch (index) {
@@ -145,13 +148,15 @@ class _HomeScreenState extends State<HomeScreen> {
         // Navigate to WalletPage
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const WalletPage()),
+          PageTransition(child: const WalletPage(), type: PageTransitionType.fade)
+          // MaterialPageRoute(builder: (context) => const WalletPage()),
         );
         break;
       case 2:
       Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const MenuPage()),
+          PageTransition(child: const MenuPage(), type: PageTransitionType.fade)
+          // MaterialPageRoute(builder: (context) => const MenuPage()),
         );
         // Navigate to Menu page
         // Add navigation for MenuPage here
