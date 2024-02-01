@@ -2,12 +2,14 @@
 
 import "dart:convert";
 
+import "package:firebase_auth/firebase_auth.dart";
 import "package:flutter/material.dart";
 import "package:flutter_application_1/Pages/HomeScreen.dart";
 import "package:flutter_application_1/Pages/Login.dart";
 import "package:flutter_application_1/Pages/Reuseable.dart";
 import 'package:http/http.dart' as http;
 import "package:page_transition/page_transition.dart";
+import "package:shared_preferences/shared_preferences.dart";
 
 class ListPage extends StatefulWidget {
   const ListPage({super.key});
@@ -88,9 +90,21 @@ class _ListPageState extends State<ListPage> {
                   
           Center(
             
-            child: firebaseUIButton(context, 'Logout', (){
-              Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const SignInScreen()));
+            child: firebaseUIButton(context, 'Logout', () async{
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.remove('userId');
+
+                // Sign out from Firebase Authentication
+                await FirebaseAuth.instance.signOut();
+
+                // Navigate to the login screen and remove all previous routes
+                // ignore: use_build_context_synchronously
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignInScreen()),
+                  (Route<dynamic> route) => false,
+                );
+
             }),
           ),
 
