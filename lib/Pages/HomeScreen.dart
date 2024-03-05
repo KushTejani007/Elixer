@@ -1,9 +1,13 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/ListPage.dart';
 import 'package:flutter_application_1/Pages/Wallet.dart';
 import 'package:flutter_application_1/Pages/menu.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,6 +19,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   late final Duration themeAnimationDuration;
+  
+  get markers => null;
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
+      
+        
+
         bottomNavigationBar: GNav(
           selectedIndex: _selectedIndex,
           onTabChange: (index) {

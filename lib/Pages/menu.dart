@@ -1,10 +1,13 @@
 // ignore_for_file: deprecated_member_use, prefer_const_constructors
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_application_1/Pages/Login.dart';
+import "package:flutter_application_1/Pages/Reuseable.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/HomeScreen.dart';
 import 'package:flutter_application_1/Pages/Wallet.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -20,6 +23,7 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+    ??
        routes: {
         '/second': (context) => HomeScreen(),
         // Add more routes if needed
@@ -39,15 +43,27 @@ class _MenuPageState extends State<MenuPage> {
         body: 
 ListView(
   children: [
-    buildClickableContainerWithLogo(context,Icons.home, 'Home', HomeScreen()),
-    buildClickableContainerWithLogo(context,Icons.home, 'Home', HomeScreen()),
-    buildClickableContainerWithLogo(context,Icons.home, 'Home', HomeScreen()),
-    buildClickableContainerWithLogo(context,Icons.home, 'Home', HomeScreen()),
-    buildClickableContainerWithLogo(context,Icons.home, 'Home', HomeScreen()),
-    buildClickableContainerWithLogo(context,Icons.home, 'Home',HomeScreen()),
-    buildClickableContainerWithLogo(context,Icons.home, 'Home',HomeScreen()),
-    buildClickableContainerWithLogo(context,Icons.home, 'Home',HomeScreen()),
-    buildClickableContainerWithLogo(context,Icons.home, 'Home',HomeScreen()),
+    buildClickableContainerWithLogo(context,Icons.payment, 'Payment Method', HomeScreen()),
+    buildClickableContainerWithLogo(context,Icons.electric_car, 'Ev Models', HomeScreen()),
+    buildClickableContainerWithLogo(context,Icons.handshake, 'Join With Us', HomeScreen()),
+    buildClickableContainerWithLogo(context,Icons.question_answer_outlined, 'Support', HomeScreen()),
+    buildClickableContainerWithLogo(context,Icons.store , 'Store',SignInScreen()),
+    firebaseUIButton(context, 'Log Out', () async{
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.remove('userId');
+
+                // Sign out from Firebase Authentication
+                await FirebaseAuth.instance.signOut();
+
+                // Navigate to the login screen and remove all previous routes
+                // ignore: use_build_context_synchronously
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignInScreen()),
+                  (Route<dynamic> route) => false,
+                );
+
+            })
 
   ],
 ),
@@ -96,7 +112,7 @@ ListView(
       print('Container clicked: $text');
       Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
+              MaterialPageRoute(builder: (context) => screen),
             );
     },
     child: Container(
@@ -113,7 +129,7 @@ ListView(
             padding: const EdgeInsets.all(10),
             child: Icon(
               icon,
-              size: 60, // Adjust size as needed
+              size: 35, // Adjust size as needed
               color: Colors.white,
             ),
           ),
@@ -121,7 +137,7 @@ ListView(
             text,
             style: TextStyle(
               color: Colors.white,
-              fontSize: 20,
+              fontSize: 15,
             ),
           ),
         ],

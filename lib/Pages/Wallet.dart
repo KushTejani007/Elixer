@@ -98,6 +98,7 @@ class _WalletPageState extends State<WalletPage> {
         // Add navigation for MenuPage here
         break;
       default:
+      //try
         break;
     }
   }
